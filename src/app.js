@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3000;
 const hbs = require('hbs');
 
 // Weather function helpers
@@ -20,7 +21,7 @@ hbs.registerPartials(partialsPath);
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-app.listen(3000, () => console.log('Server started!'));
+app.listen(port, () => console.log('Server started on port ' + port));
 
 app.get('/', (req, res) => {
   res.render('index', {
